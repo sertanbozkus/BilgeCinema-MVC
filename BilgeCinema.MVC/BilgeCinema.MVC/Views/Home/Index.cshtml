@@ -1,0 +1,43 @@
+﻿@model List<MovieViewModel>
+
+<h1>@ViewBag.AppName</h1>
+
+<div class="mt-2 mb-2">
+    <a asp-controller="Movie" asp-action="New" class="btn btn-warning">Yeni Film Ekle</a>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-8">
+
+        <table class="table">
+
+            <tr>
+                <th>Film Adı</th>
+                <th>Filmin Türü</th>
+                <th>Filmin Yönetmeni</th>
+                <th>Bilet Fiyatı</th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Type</td>
+                    <td>@item.Director</td>
+                    <td>@item.UnitPrice</td>
+                    <td>
+                        <a asp-controller="Movie" asp-action="MakeDiscount" asp-route-id="@item.Id" class="btn btn-sm btn-success">İndirim Yap/Kaldir</a>
+                    </td>
+                    <td>
+                        <a asp-controller="movie" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Düzenle</a>
+                        <a asp-controller="movie" asp-action="Delete" asp-route-id ="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+                       
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>
